@@ -109,7 +109,10 @@ function capitalizeName(name) {
     let newName = name.toLowerCase()
     .split(' ')
     .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-    .join(' ');
+    .join(' ')
+    .split('-')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join('-');
 
     return newName.charAt(0).toUpperCase() + newName.slice(1);
 }
