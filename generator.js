@@ -106,8 +106,12 @@ function download(content, fileName, contentType) {
 /* eslint-enable */
 
 function capitalizeName(name) {
-    const lower = name.toLowerCase();
-    return lower.charAt(0).toUpperCase() + lower.slice(1);
+    let newName = name.toLowerCase()
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');
+
+    return newName.charAt(0).toUpperCase() + newName.slice(1);
 }
 
 /***************/
@@ -143,6 +147,9 @@ function newName(nameTries, minLength) {
   do {
     name += Trie.randomWord(nameTries.suffixes[name.slice(-1)]);
   } while (name.length < minLength);
+  if (pokenames.includes(name)) {
+    return newName(nameTries, minLength);
+  }
   return name;
 }
 
