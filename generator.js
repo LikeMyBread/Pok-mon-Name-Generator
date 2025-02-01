@@ -147,6 +147,7 @@ function newName(nameTries, minLength) {
   do {
     name += Trie.randomWord(nameTries.suffixes[name.slice(-1)]);
   } while (name.length < minLength);
+  
   if (pokenames.includes(name)) {
     return newName(nameTries, minLength);
   }
